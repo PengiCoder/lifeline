@@ -32,84 +32,16 @@
             overflow-x: hidden;
         }
 
-        .container {
+        .content-wrapper {
             width: 90%;
             max-width: 1000px;
             margin: auto;
-            padding: 20px 0;
-        }
-
-        .hero {
-            background: linear-gradient(rgba(0, 90, 156, 0.65), rgba(0, 90, 156, 0.65)), url('https://www.lifeline.org.au/media/3cuivbot/andy.jpg?mode=crop&width=1100') no-repeat center center/cover;
-            color: var(--light-text);
-            padding: 80px 20px;
-            text-align: center;
-            position: relative;
-            min-height: 50vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.8em;
-            margin-bottom: 15px;
-            font-weight: 700;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-            animation: fadeInDown 1s ease-out;
-        }
-
-        .hero p.subtitle {
-            font-size: 1.3em;
-            margin-bottom: 30px;
-            font-weight: 300;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-            animation: fadeInUp 1s ease-out 0.3s;
-            animation-fill-mode: backwards;
-        }
-
-        nav.main-nav {
-            background-color: rgba(0, 0, 0, 0.15);
-            padding: 10px 0;
-            margin-top: 30px;
-            border-radius: var(--border-radius);
-            animation: fadeInUp 1s ease-out 0.6s;
-            animation-fill-mode: backwards;
-        }
-        nav.main-nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            text-align: center;
-        }
-        nav.main-nav ul li {
-            display: inline-block;
-            margin: 0 15px;
-        }
-        nav.main-nav ul li a {
-            color: var(--light-text);
-            text-decoration: none;
-            font-weight: 600;
-            padding: 8px 12px;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-        nav.main-nav ul li a:hover {
-            background-color: rgba(255,255,255,0.25);
+            padding-top: 30px;
+            padding-bottom: 20px;
         }
 
         section {
-            padding: 60px 20px;
+            padding: 40px 20px;
             background-color: #fff;
             margin-bottom: 20px;
             border-radius: var(--border-radius);
@@ -127,6 +59,7 @@
             font-family: 'Montserrat', sans-serif;
             color: var(--primary-color);
             font-size: 2em;
+            margin-top: 0;
             margin-bottom: 25px;
             text-align: center;
             font-weight: 600;
@@ -185,25 +118,25 @@
             border-bottom-color: var(--primary-color);
         }
 
-        .about-content {
+        .about-content-flex {
             display: flex;
             gap: 30px;
             align-items: center;
         }
         .about-text {
-            flex: 2;
+            flex: 1.5; /* Give text a bit more space */
         }
-        .about-image {
+        .about-image-container {
             flex: 1;
-            text-align: center;
+            text-align: center; /* Centers image if it's smaller than container */
         }
-        .about-image img {
+        .about-image-container img {
             max-width: 100%;
             height: auto;
             border-radius: var(--border-radius);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            content: url('https://images.unsplash.com/photo-1534536281715-e28d76689b4d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y29ubmVjdGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60');
-            max-height: 250px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            display: block; /* Prevents extra space below image */
+            margin: auto; /* Helps with centering */
         }
 
         .card-grid {
@@ -278,8 +211,8 @@
             background-color: var(--primary-color);
             color: rgba(255,255,255,0.8);
             text-align: center;
-            padding: 40px 20px;
-            margin-top: 40px;
+            padding: 30px 20px;
+            margin-top: 30px;
         }
         footer p {
             margin: 5px 0;
@@ -304,20 +237,16 @@
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2em;
+            .content-wrapper {
+                width: 95%;
+                padding-top: 20px;
             }
-            .hero p.subtitle {
-                font-size: 1.1em;
-            }
-            .about-content {
+            .about-content-flex {
                 flex-direction: column;
             }
-            .about-image {
+            .about-image-container {
                 margin-top: 20px;
-                max-width: 70%;
-                margin-left: auto;
-                margin-right: auto;
+                max-width: 80%; /* control image size on mobile stack */
             }
             h2 {
                 font-size: 1.8em;
@@ -325,27 +254,15 @@
             .crisis-contact .phone-number {
                 font-size: 2em;
             }
+            section {
+                padding: 30px 15px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Lifeline Australia</h1>
-            <p class="subtitle">Support Through Action. Community. Hope.</p>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#crisis-contact">Get Help Now</a></li>
-                    <li><a href="#services">Our Services</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#support">Support Lifeline</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <div class="container">
+    <div class="content-wrapper">
 
         <section id="crisis-contact" class="crisis-contact">
             <h3>Need to Talk? Reach Out Now.</h3>
@@ -363,12 +280,13 @@
 
         <section id="about">
             <h2>About Lifeline Australia</h2>
-            <div class="about-content">
+            <div class="about-content-flex">
                 <div class="about-text">
                     <p>Lifeline is a national charity dedicated to providing all Australians experiencing emotional distress with access to 24-hour crisis support and suicide prevention services. With a vision of an Australia free of suicide, Lifeline works to empower individuals and communities to be suicide-safe through connection, compassion, and hope.</p>
-                    <p>Their services are confidential, non-judgmental, and available to anyone, at any time, for any reason. They believe that no one should have to face their darkest moments alone.</p>
+                    <p>Their services are confidential, non-judgmental, and available to anyone, at any time, for any reason. They believe that no one should have to face their darkest moments alone. Initiatives like community engagement and fundraising events, such as The Push-Up Challenge, help support these vital services.</p>
                 </div>
-                <div class="about-image">
+                <div class="about-image-container">
+                    <img src="https://www.lifeline.org.au/media/3cuivbot/andy.jpg?mode=crop&width=1100" alt="People participating in a community fitness event for Lifeline">
                 </div>
             </div>
         </section>
@@ -439,6 +357,7 @@
                 </div>
             </div>
         </section>
+
     </div>
 
     <footer>
@@ -454,7 +373,6 @@
 
     <script>
         const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav.main-nav a');
 
         const revealSection = (entries, observer) => {
             entries.forEach(entry => {
@@ -467,27 +385,11 @@
 
         const sectionObserver = new IntersectionObserver(revealSection, {
             root: null,
-            threshold: 0.15,
+            threshold: 0.10,
         });
 
         sections.forEach(section => {
             sectionObserver.observe(section);
-        });
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href.startsWith('#')) {
-                    e.preventDefault();
-                    const targetId = href.substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            });
         });
     </script>
 
