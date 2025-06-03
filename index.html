@@ -7,10 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #005A9C; /* Lifeline-inspired Blue */
-            --secondary-color: #007BCC; /* Brighter Blue for accents */
-            --accent-color-crisis: #D9534F; /* Muted Red for crisis line */
-            --accent-color-hope: #5CB85C; /* Green for positive actions */
+            --primary-color: #005A9C;
+            --secondary-color: #007BCC;
+            --accent-color-crisis: #D9534F;
+            --accent-color-hope: #5CB85C;
             --light-bg: #f8f9fa;
             --dark-text: #333;
             --light-text: #fff;
@@ -19,30 +19,97 @@
         }
 
         html {
-            scroll-behavior: smooth; /* Still good for any internal anchors you might add later */
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Lato', Arial, sans-serif;
             line-height: 1.7;
-            margin: 0; /* Crucial for full embed */
-            padding: 0; /* Crucial for full embed */
-            background-color: #fff; /* Assuming you want the content background, not light-bg for the body itself */
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
             color: var(--dark-text);
             overflow-x: hidden;
         }
 
-        .content-wrapper { /* New wrapper to control overall padding if needed */
+        .container {
             width: 90%;
             max-width: 1000px;
             margin: auto;
-            padding-top: 30px; /* Give some space at the top if no hero */
-            padding-bottom: 20px;
+            padding: 20px 0;
         }
 
-        /* --- Sections --- */
+        .hero {
+            background: linear-gradient(rgba(0, 90, 156, 0.65), rgba(0, 90, 156, 0.65)), url('https://www.lifeline.org.au/media/3cuivbot/andy.jpg?mode=crop&width=1100') no-repeat center center/cover;
+            color: var(--light-text);
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero p.subtitle {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            animation: fadeInUp 1s ease-out 0.3s;
+            animation-fill-mode: backwards;
+        }
+
+        nav.main-nav {
+            background-color: rgba(0, 0, 0, 0.15);
+            padding: 10px 0;
+            margin-top: 30px;
+            border-radius: var(--border-radius);
+            animation: fadeInUp 1s ease-out 0.6s;
+            animation-fill-mode: backwards;
+        }
+        nav.main-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        nav.main-nav ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+        nav.main-nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        nav.main-nav ul li a:hover {
+            background-color: rgba(255,255,255,0.25);
+        }
+
         section {
-            padding: 40px 20px; /* Adjusted padding for tighter layout */
+            padding: 60px 20px;
             background-color: #fff;
             margin-bottom: 20px;
             border-radius: var(--border-radius);
@@ -55,20 +122,11 @@
             opacity: 1;
             transform: translateY(0);
         }
-        section:first-of-type {
-             /* You could remove top margin/padding for the very first section if it's the crisis one
-             margin-top: 0;
-             padding-top: 20px;
-             box-shadow: none; remove shadow if crisis section is against a plain bg
-             */
-        }
-
 
         h2 {
             font-family: 'Montserrat', sans-serif;
             color: var(--primary-color);
             font-size: 2em;
-            margin-top: 0; /* Removed default top margin from h2 for tighter sections */
             margin-bottom: 25px;
             text-align: center;
             font-weight: 600;
@@ -83,7 +141,6 @@
             border-radius: 2px;
         }
 
-        /* --- Crisis Contact Section --- */
         .crisis-contact {
             background-color: #fff9e6;
             border: 1px solid #ffe0b2;
@@ -91,7 +148,6 @@
             text-align: center;
             border-radius: var(--border-radius);
             box-shadow: var(--card-shadow);
-            /* margin-top: 0; if it's the very first element and you want no space above body */
         }
         .crisis-contact h3 {
             font-family: 'Montserrat', sans-serif;
@@ -129,7 +185,6 @@
             border-bottom-color: var(--primary-color);
         }
 
-        /* --- About Section --- */
         .about-content {
             display: flex;
             gap: 30px;
@@ -151,7 +206,6 @@
             max-height: 250px;
         }
 
-        /* --- Card Layout (for Services & Support) --- */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -196,7 +250,6 @@
             font-weight: bold;
         }
 
-        /* --- Buttons --- */
         .button {
             display: inline-block;
             background-color: var(--secondary-color);
@@ -221,13 +274,12 @@
             background-color: #4a934a;
         }
 
-        /* --- Footer --- */
         footer {
             background-color: var(--primary-color);
             color: rgba(255,255,255,0.8);
             text-align: center;
-            padding: 30px 20px; /* Reduced padding */
-            margin-top: 30px; /* Reduced margin */
+            padding: 40px 20px;
+            margin-top: 40px;
         }
         footer p {
             margin: 5px 0;
@@ -242,21 +294,21 @@
             text-decoration: none;
         }
 
-        /* Animations (fadeInDown and fadeInUp might not be needed if hero is gone) */
-        @keyframes fadeInDown { /* Keep if you re-use elsewhere */
+        @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes fadeInUp { /* Keep if you re-use elsewhere */
+        @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive Adjustments */
         @media (max-width: 768px) {
-            .content-wrapper {
-                width: 95%;
-                padding-top: 20px;
+            .hero h1 {
+                font-size: 2.2em;
+            }
+            .hero p.subtitle {
+                font-size: 1.1em;
             }
             .about-content {
                 flex-direction: column;
@@ -273,18 +325,28 @@
             .crisis-contact .phone-number {
                 font-size: 2em;
             }
-            section {
-                padding: 30px 15px;
-            }
         }
-
     </style>
 </head>
 <body>
 
-    <!-- NO HERO/HEADER SECTION HERE -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Lifeline Australia</h1>
+            <p class="subtitle">Support Through Action. Community. Hope.</p>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#crisis-contact">Get Help Now</a></li>
+                    <li><a href="#services">Our Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#support">Support Lifeline</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <div class="content-wrapper">
+    <div class="container">
+
         <section id="crisis-contact" class="crisis-contact">
             <h3>Need to Talk? Reach Out Now.</h3>
             <p>If you are in distress or need immediate support, please contact Lifeline.</p>
@@ -307,7 +369,6 @@
                     <p>Their services are confidential, non-judgmental, and available to anyone, at any time, for any reason. They believe that no one should have to face their darkest moments alone.</p>
                 </div>
                 <div class="about-image">
-                    <!-- Image already defined by CSS using content: url(...) -->
                 </div>
             </div>
         </section>
@@ -329,7 +390,7 @@
                 </div>
                 <div class="card">
                     <h3>Community Programs</h3>
-                    <p>Various programs that support mental health, suicide prevention education, and community wellbeing.</p>
+                    <p>Various programs that support mental health, suicide prevention education, and community wellbeing, including initiatives like The Push-Up Challenge.</p>
                 </div>
                 <div class="card">
                     <h3>Information & Resources</h3>
@@ -373,28 +434,27 @@
                 </div>
                 <div class="card">
                     <h3>Fundraise or Advocate</h3>
-                    <p>Host an event, participate in a challenge, or simply raise awareness about mental health and Lifeline's work.</p>
+                    <p>Host an event, participate in a challenge like The Push-Up Challenge, or simply raise awareness.</p>
                     <a href="https://www.lifeline.org.au/get-involved/" target="_blank" rel="noopener noreferrer" class="button">Get Involved</a>
                 </div>
             </div>
         </section>
-
     </div>
 
     <footer>
-       <div class="container"> {/* Kept .container here for footer content centering */}
+        <div class="container">
             <p>This informational page was created for a school project.</p>
             <p>For official information, to access services, or to make a donation, please visit the
                 <a href="https://www.lifeline.org.au" target="_blank" rel="noopener noreferrer">Official Lifeline Australia Website</a>.
             </p>
             <p><strong>If you or someone you know is in immediate danger, call 000 (Triple Zero).</strong></p>
-            <p> Content inspired by Lifeline Australia.</p>
+            <p>© <script>document.write(new Date().getFullYear())</script> Your Name / School Project. Content inspired by Lifeline Australia.</p>
         </div>
     </footer>
 
     <script>
-        // Simple Scroll Reveal for sections
         const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav.main-nav a');
 
         const revealSection = (entries, observer) => {
             entries.forEach(entry => {
@@ -407,16 +467,28 @@
 
         const sectionObserver = new IntersectionObserver(revealSection, {
             root: null,
-            threshold: 0.10, // Reveal a bit sooner
+            threshold: 0.15,
         });
 
         sections.forEach(section => {
             sectionObserver.observe(section);
         });
 
-        // Note: The JavaScript for navLink smooth scrolling was removed
-        // as the internal nav in the hero section was removed.
-        // CSS `scroll-behavior: smooth;` on `html` handles other anchor links if any.
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
     </script>
 
 </body>
